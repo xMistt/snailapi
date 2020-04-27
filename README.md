@@ -19,7 +19,7 @@ import asyncio
 snail = snailapi.APIClient()
 
 async def main() -> None:
-    shop = snail.get_shop()
+    shop = await snail.get_shop()
 
     print('=== FEATURED ===')
     for item in shop.featured:
