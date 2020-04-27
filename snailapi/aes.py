@@ -3,7 +3,9 @@ class FortniteAES:
 
     Attributes
     ----------
-    aes: :class:`str`
+    raw: :class`dict`:
+        Raw data from SnailAPI (can be used to reconstruct object).
+    aes: :class:`str`:
         AES key itself.
     pak: :class:`str`:
         The pack the AES key is used for.
@@ -15,8 +17,6 @@ class FortniteAES:
     """
     def __init__(self, data: dict) -> None:
         self.raw = data
-
-        print(data)
 
         self.aes = data.get('aes')
         self.pak = data.get('pak')
