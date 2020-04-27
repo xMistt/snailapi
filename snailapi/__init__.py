@@ -1,4 +1,4 @@
-__name__ = 'SnailAPI'
+__name__ = 'snailapi'
 __author__ = 'xMistt'
 __version__ = '1.0.0'
 
