@@ -18,6 +18,7 @@ import asyncio
 
 snail = snailapi.APIClient()
 
+
 async def main() -> None:
     shop = await snail.get_shop()
 
@@ -28,6 +29,7 @@ async def main() -> None:
     print('=== DAILY ===')
     for item in shop.featured:
         print(f'{item.name}: {item.price} V-Bucks')
+
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
@@ -49,8 +51,9 @@ client = fortnitepy.Client(
     )
 )
 
+
 @client.event
-async def event_friend_message(message):
+async def event_friend_message(message: fortnitepy.FriendMessage) -> None:
     args = message.content.split()
     split = args[1:]
     content = " ".join(split)
@@ -65,6 +68,7 @@ async def event_friend_message(message):
             await message.reply('Skin set to: {skin[0].name}.')
         except snailapi.exceptions.NotFound:
             await message.reply('Failed to find skin with the name: {content}.')
+
 
 client.run()
 ```
