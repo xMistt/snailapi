@@ -1,6 +1,7 @@
 from .exceptions import InvalidParameters, NotFound
 
 from typing import Dict, Any, Tuple
+import json
 
 
 class BRCosmetic:
@@ -48,15 +49,6 @@ class BRCosmetic:
         self.set = data.get('set')
         self.variants = data.get('variants')
         self.icon = data.get('icon')
-
-
-async def _search_parameters(**search_parameter: Any) -> Tuple[Any, Any]:
-    """Function to convert dictionary to parameters."""
-    if len(search_parameter) == 0 or len(search_parameter) > 1:
-        raise InvalidParameters('More than/less than 1 search parameter provided.')
-
-    for key, value in search_parameter.items():
-        return key, value
 
 
 class Cosmetics:
@@ -109,15 +101,20 @@ class Cosmetics:
             List of BRCosmetic objects containing information of cosmetics matching parameters.
         """
 
-        parameters = await _search_parameters(**search_parameters)
+        if len(search_parameters) == 0:
+            raise InvalidParameters('No search parameters provided. At least 1 is required.')
+
         data = await self.http.request(
             method="GET",
             url="/cosmetics/search",
-            params={parameters[0]: parameters[1]}
+            params=search_parameters
         )
 
         if len(data) == 0:
             raise NotFound(f"No cosmetics found matching parameters.")
+
+        if 'error' in data:
+            raise InvalidParameters(f"{data['error']}.")
 
         return [BRCosmetic(cosmetic_data) for cosmetic_data in data]
 
