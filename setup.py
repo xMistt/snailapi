@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="snailapi",
-    version="1.1.0",
+    version="1.2.0",
     author="xMistt",
     description="Asynchronous Python wrapper for Snail API.",
     project_urls={

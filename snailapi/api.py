@@ -34,7 +34,7 @@ class APIClient:
 
         return BRShop(data)
 
-    async def get_aes(self) -> list:
+    async def get_dynamic_aes_keys(self) -> list:
         """|coro|
 
         Gets all current dynamic AES keys. Returns None if there is no dynamic aes keys.
@@ -47,8 +47,21 @@ class APIClient:
 
         data = await self.http.request(
             method="GET",
-            url="/aes"
+            url="/aes/dynamic"
         )
 
         return [FortniteAES(dynamic_key) for dynamic_key in data] if len(data) is not 0 else None
+
+    async def get_main_aes_key(self) -> str:
+        """|coro|
+
+        Gets the main AES key in its 32 byte hex form. Updates within a few seconds of a update.
+
+        Returns
+        -------
+        :class:`str`:
+            Main aes key in 32 byte hex form.
+        """
+
+        return await self.http.request(method="GET", url="/aes/main")
 

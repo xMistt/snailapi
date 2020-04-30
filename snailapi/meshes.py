@@ -82,19 +82,17 @@ class Meshes:
             List of CosmeticMesh objects containing information of meshes matching parameters.
         """
 
-        if len(search_parameters) == 0:
-            raise InvalidParameters('No search parameters provided. At least 1 is required.')
-
+        parameters = await _search_parameters(**search_parameters)
         data = await self.http.request(
             method="GET",
             url="/meshes/search",
-            params=search_parameters
+            params={parameters[0]: parameters[1]}
         )
-
-        if len(data) == 0:
-            raise NotFound(f"No cosmetics found matching parameters.")
 
         if 'error' in data:
             raise InvalidParameters(f"{data['error']}.")
+
+        if len(data) == 0:
+            raise NotFound(f"No meshes found matching parameters.")
 
         return [CosmeticMesh(mesh_data) for mesh_data in data]
