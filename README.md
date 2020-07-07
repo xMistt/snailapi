@@ -1,6 +1,8 @@
 # snailapi
 Fully Asynchronous Python wrapper for Snail API.
 
+# **SNAILAPI IS CURRENTLY DOWN, THEREFORE THIS WRAPPER WON'T WORK.**
+
 [![Downloads](https://pepy.tech/badge/snailapi)](https://pepy.tech/project/snailapi)
 [![Requires: Python 3.x](https://img.shields.io/pypi/pyversions/snailapi.svg)](https://pypi.org/project/snailapi/)
 [![BenBot Version: 1.0.1](https://img.shields.io/pypi/v/snailapi.svg)](https://pypi.org/project/snailapi/)
