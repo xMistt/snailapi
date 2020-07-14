@@ -2,6 +2,9 @@
 Fully Asynchronous Python wrapper for Snail API.
 
 # **SNAILAPI IS CURRENTLY DOWN, THEREFORE THIS WRAPPER WON'T WORK.**
+# **EDIT: SNAIL API IS COMING BACK SOON.**
+![image](https://user-images.githubusercontent.com/55298769/87482660-cb00af80-c629-11ea-9f28-9ee119d17073.png)
+
 
 [![Downloads](https://pepy.tech/badge/snailapi)](https://pepy.tech/project/snailapi)
 [![Requires: Python 3.x](https://img.shields.io/pypi/pyversions/snailapi.svg)](https://pypi.org/project/snailapi/)
